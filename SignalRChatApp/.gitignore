@@ -1,0 +1,66 @@
+# ====================
+# Visual Studio
+# ====================
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# ====================
+# Build Folders
+# ====================
+bin/
+obj/
+out/
+TestResults/
+
+# App secrets
+appsettings.json
+appsettings.Development.json
+
+# ====================
+# Rider / JetBrains IDE
+# ====================
+.idea/
+*.iml
+
+# ====================
+# Node / React Frontend
+# ====================
+node_modules/
+dist/
+build/
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ====================
+# Logs
+# ====================
+*.log
+logs/
+*.vsix
+
+# ====================
+# Temporary Files
+# ====================
+*.tmp
+*.temp
+*.cache
+*.DS_Store
+Thumbs.db
+
+# ====================
+# MongoDB / Database Files (if any local dumps)
+# ====================
+*.bson
+*.dump
+
+# ====================
+# Others
+# ====================
+*.zip
+*.tar.gz

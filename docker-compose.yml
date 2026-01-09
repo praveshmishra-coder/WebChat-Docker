@@ -1,0 +1,22 @@
+services:
+  backend:
+    build:
+      context: ./SignalRChatApp
+    ports:
+      - "5103:5103"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - MongoDB__ConnectionString=${MONGO_URI}
+      - JwtSettings__SecretKey=${JWT_SECRET}
+    restart: always
+
+  frontend:
+    build:
+      context: ./signalr-chat-react
+    ports:
+      - "3000:80"
+    environment:
+      - VITE_API_URL=http://backend:5103
+    depends_on:
+      - backend
+
