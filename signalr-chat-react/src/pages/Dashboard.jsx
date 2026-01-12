@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import * as signalR from "@microsoft/signalr";
-import { FaUser } from "react-icons/fa"; // For user icon
+import { FaUser } from "react-icons/fa"; 
 
 export default function Dashboard() {
   const [connection, setConnection] = useState(null);
@@ -73,7 +73,7 @@ export default function Dashboard() {
     loadHistory();
   }, [connection, selectedUser]);
 
-  // Scroll to bottom on new messages
+  // Scroll to bottom 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);

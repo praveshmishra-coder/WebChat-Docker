@@ -5,13 +5,13 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-// =================== Builder ===================
+//  Builder 
 var builder = WebApplication.CreateBuilder(args);
 
-// 🔥 REQUIRED FOR DOCKER
+// REQUIRED FOR DOCKER
 builder.WebHost.UseUrls("http://+:5103");
 
-// =================== MongoDB ===================
+//  MongoDB 
 builder.Services.Configure<MongoDbSettings>(
     builder.Configuration.GetSection("MongoDB"));
 
@@ -29,7 +29,7 @@ builder.Services.AddSingleton<IMongoClient>(sp =>
 builder.Services.AddSingleton<UserService>();
 builder.Services.AddSingleton<ChatService>();
 
-// =================== JWT ===================
+//  JWT 
 var jwtSettings = builder.Configuration
     .GetSection("JwtSettings")
     .Get<JwtSettings>();
@@ -79,13 +79,13 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-// =================== Services ===================
+//  Services 
 builder.Services.AddControllers();
 builder.Services.AddSignalR();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// =================== CORS ===================
+//  CORS 
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy", policy =>
@@ -98,30 +98,28 @@ builder.Services.AddCors(options =>
     });
 });
 
-// =================== Build App ===================
 var app = builder.Build();
 
-// =================== Middleware ===================
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseRouting();          // ✅ Required before authentication & SignalR
+app.UseRouting();          
 app.UseCors("CorsPolicy");
 
-app.UseAuthentication();   // ✅ Must come BEFORE UseAuthorization
+app.UseAuthentication();   
 app.UseAuthorization();
 
-// =================== MongoDB Info ===================
+//  MongoDB Info 
 var mongoSettings = builder.Configuration
     .GetSection("MongoDB")
     .Get<MongoDbSettings>();
 
-Console.WriteLine($"MongoDB DB: {mongoSettings?.DatabaseName}");
+// Console.WriteLine($"MongoDB DB: {mongoSettings?.DatabaseName}");
 
-// =================== Endpoints ===================
+//  Endpoints 
 app.MapControllers();
 app.MapHub<ChatHub>("/chatHub");
 

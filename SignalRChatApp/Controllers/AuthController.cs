@@ -18,7 +18,7 @@ public class AuthController : ControllerBase
         _jwtSettings = jwtSettings;
     }
 
-    // =================== REGISTER ===================
+    //  REGISTER 
     [HttpPost("register")]
     public async Task<IActionResult> Register(RegisterRequest request)
     {
@@ -39,7 +39,7 @@ public class AuthController : ControllerBase
         });
     }
 
-    // =================== LOGIN ===================
+    //  LOGIN 
     [HttpPost("login")]
     public async Task<IActionResult> Login(LoginRequest request)
     {
@@ -59,7 +59,7 @@ public class AuthController : ControllerBase
         });
     }
 
-    // =================== JWT GENERATOR ===================
+    //  JWT GENERATOR 
     private string GenerateJwtToken(ChatUser user)
     {
         var tokenHandler = new JwtSecurityTokenHandler();

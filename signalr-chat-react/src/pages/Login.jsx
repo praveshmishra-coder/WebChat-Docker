@@ -10,29 +10,25 @@ export default function Login() {
   const navigate = useNavigate();
   const API_BASE = import.meta.env.VITE_API_URL;
 
-  // ✅ Validation
+  // Validation
   const validate = () => {
-  // Email required
+  
   if (!email.trim()) {
     toast.error("Email is required");
     return false;
   }
 
-  // Password required
   if (!password.trim()) {
     toast.error("Password is required");
     return false;
   }
 
-  // Email format check
   const emailRegex = /\S+@\S+\.\S+/;
   if (!emailRegex.test(email)) {
     toast.error("Please enter a valid email");
     return false;
   }
 
-  // Password strength check (optional for login, but good UX)
-  // Require at least 8 characters, 1 uppercase, 1 lowercase, 1 number, 1 symbol
   const passwordRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^()_+=\-])[A-Za-z\d@$!%*?&#^()_+=\-]{8,}$/;
 
@@ -59,14 +55,13 @@ export default function Login() {
         body: JSON.stringify({ email, password })
       });
 
-      // ❌ Never show backend errors
       if (!res.ok) {
         throw new Error("INVALID_CREDENTIALS");
       }
 
       const user = await res.json();
 
-      // 🔐 Store auth data
+      // Store auth data
       localStorage.setItem("username", user.username);
       localStorage.setItem("userId", user.id);
       localStorage.setItem("token", user.token);

@@ -8,7 +8,6 @@ import Login from "./pages/Login";
 function App() {
   return (
     <BrowserRouter>
-      {/* Toast container should be outside Routes */}
       <ToastContainer position="top-right" autoClose={3000} />
 
       <Routes>

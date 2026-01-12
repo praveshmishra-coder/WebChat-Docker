@@ -25,7 +25,7 @@ namespace SignalRChatApp.Hubs
             _chatService = chatService;
         }
 
-        // =================== HELPERS ===================
+        //  HELPERS 
         private string GetUsername()
         {
             return Context.User?
@@ -34,7 +34,7 @@ namespace SignalRChatApp.Hubs
                 ?.Value!;
         }
 
-        // =================== REGISTER USER ===================
+        //  REGISTER USER 
         public async Task RegisterUser()
         {
             var username = GetUsername();
@@ -50,7 +50,7 @@ namespace SignalRChatApp.Hubs
             );
         }
 
-        // =================== SEND PRIVATE MESSAGE ===================
+        //  SEND PRIVATE MESSAGE 
         public async Task SendPrivateMessage(string toUser, string message)
         {
             var fromUser = GetUsername();
@@ -71,7 +71,7 @@ namespace SignalRChatApp.Hubs
             });
         }
 
-        // =================== CHAT HISTORY ===================
+        //  CHAT HISTORY 
         public async Task<List<ChatMessage>> GetChatHistory(string withUser)
         {
             var fromUser = GetUsername();
@@ -81,7 +81,7 @@ namespace SignalRChatApp.Hubs
             return await _chatService.GetMessages(fromUser, withUser);
         }
 
-        // =================== DISCONNECT ===================
+        //  DISCONNECT 
         public override async Task OnDisconnectedAsync(System.Exception? exception)
         {
             var user = Users.FirstOrDefault(x => x.Value == Context.ConnectionId);

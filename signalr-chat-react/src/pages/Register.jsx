@@ -11,7 +11,7 @@ export default function Register() {
   const navigate = useNavigate();
   const API_BASE = import.meta.env.VITE_API_URL;
 
-  // ✅ Validation
+  // Validation
   const validate = () => {
   if (!username.trim()) {
     toast.error("Username is required");
@@ -65,14 +65,13 @@ export default function Register() {
         body: JSON.stringify({ username, email, password })
       });
 
-      // ❌ Never expose backend error details
       if (!res.ok) {
         throw new Error("REGISTRATION_FAILED");
       }
 
       const user = await res.json();
 
-      // 🔐 Store auth data
+      // Store auth data
       localStorage.setItem("username", user.username);
       localStorage.setItem("userId", user.id);
       localStorage.setItem("token", user.token);
