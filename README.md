@@ -39,15 +39,3 @@ The entire application is **dockerized using Docker Compose**, making it easy to
 
 ---
 
-## 📂 Project Structure
-
-WebChat-Docker/
-│
-├── SignalRChatApp/ # ASP.NET Core backend
-│ └── Dockerfile
-│
-├── signalr-chat-react/ # React frontend
-│ └── Dockerfile
-│
-├── docker-compose.yml
-└── README.md
