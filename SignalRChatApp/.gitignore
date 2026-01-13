@@ -16,7 +16,6 @@ out/
 TestResults/
 
 # App secrets
-appsettings.json
 appsettings.Development.json
 
 # ====================
