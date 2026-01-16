@@ -113,11 +113,11 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 //  MongoDB Info 
-var mongoSettings = builder.Configuration
-    .GetSection("MongoDB")
-    .Get<MongoDbSettings>();
+// var mongoSettings = builder.Configuration
+//     .GetSection("MongoDB")
+//     .Get<MongoDbSettings>();
 
-// Console.WriteLine($"MongoDB DB: {mongoSettings?.DatabaseName}");
+// // Console.WriteLine($"MongoDB DB: {mongoSettings?.DatabaseName}");
 
 //  Endpoints 
 app.MapControllers();
